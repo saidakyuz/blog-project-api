@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const { getAllAuthors } = require("./controllers/authors");
 const { getAllPosts, getSinglePost } = require("./controllers/blogposts");
+const { getCommentsOfPost } = require("./controllers/comments.js");
 
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
@@ -24,6 +25,7 @@ app.get("/authors", getAllAuthors);
 
 app.get("/posts", getAllPosts);
 app.get("/posts/:id", getSinglePost);
+app.get("/posts/:id/comments", getCommentsOfPost);
 
 // Start server
 app.listen(port, () => console.log(`Server running in port: ${port}`));
