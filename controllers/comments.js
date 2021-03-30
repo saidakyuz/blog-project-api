@@ -18,10 +18,10 @@ const getCommentsOfPost = async (req, res) => {
 const createPost = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, comment } = req.body;
+    const { name, title, comment } = req.body;
     const result = await pool.query(
-      "INSERT INTO comments(name, comment, post_id) VALUES($1, $2, $3) RETURNING *;",
-      [name, comment, id]
+      "INSERT INTO comments(name, title, comment, post_id) VALUES($1, $2, $3, $4) RETURNING *;",
+      [name, title, comment, id]
     );
     res.json(result.rows[0]);
   } catch (error) {
