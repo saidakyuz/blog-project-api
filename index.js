@@ -3,9 +3,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 const { getAllAuthors } = require("./controllers/authors");
 const { getAllPosts, getSinglePost } = require("./controllers/blogposts");
-const { getCommentsOfPost } = require("./controllers/comments.js");
+const { getCommentsOfPost, createPost } = require("./controllers/comments.js");
 
 // Add Access Control Allow Origin headers
+// Is currently open to all domains (hence the "*"), could be changed to our netlify-domain
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.header(
@@ -14,6 +15,9 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+// Enable body parsing for JSON
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send(
@@ -25,6 +29,7 @@ app.get("/authors", getAllAuthors);
 
 app.get("/posts", getAllPosts);
 app.get("/posts/:id", getSinglePost);
+app.post("/posts/:id/comments", createPost);
 app.get("/posts/:id/comments", getCommentsOfPost);
 
 // Start server
