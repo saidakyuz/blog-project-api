@@ -1,13 +1,8 @@
 const { Pool } = require("pg");
-
-// import { Pool } from "pg";
+const connectionString = process.env.PG_CONNECTION;
 
 const pool = new Pool({
-  user: "uloaenmp",
-  host: "tai.db.elephantsql.com",
-  database: "uloaenmp",
-  password: "0fzsGpMVmWvxWc-Uv4HUAHwMQ7OHfJ6b",
-  port: 5432,
+  connectionString
 });
 
 module.exports = pool;
