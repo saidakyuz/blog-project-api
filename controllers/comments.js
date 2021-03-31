@@ -1,6 +1,6 @@
-const pool = require("../pg");
+import pool from "../pg";
 
-const getCommentsOfPost = async (req, res) => {
+export const getCommentsOfPost = async (req, res) => {
   try {
     const { id } = req.params;
     const results = await pool.query(
@@ -15,7 +15,7 @@ const getCommentsOfPost = async (req, res) => {
   }
 };
 
-const createPost = async (req, res) => {
+export const createPost = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, title, comment } = req.body;
@@ -28,5 +28,3 @@ const createPost = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
-module.exports = { getCommentsOfPost, createPost };

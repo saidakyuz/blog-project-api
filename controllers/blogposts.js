@@ -1,6 +1,6 @@
-const pool = require("../pg");
+import pool from "../pg";
 
-const getAllPosts = async (req, res) => {
+export const getAllPosts = async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM blogPost");
     res.json(result.rows);
@@ -9,7 +9,7 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-const getSinglePost = async (req, res) => {
+export const getSinglePost = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await pool.query(
@@ -23,4 +23,3 @@ const getSinglePost = async (req, res) => {
     res.status(500).json(error);
   }
 };
-module.exports = { getAllPosts, getSinglePost };

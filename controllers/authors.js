@@ -1,6 +1,6 @@
-const pool = require("../pg");
+import pool from "../pg";
 
-const getAllAuthors = async (req, res) => {
+export const getAllAuthors = async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM authors");
     res.json(result.rows);
@@ -8,5 +8,3 @@ const getAllAuthors = async (req, res) => {
     res.status(500).json(error);
   }
 };
-
-module.exports = { getAllAuthors };
