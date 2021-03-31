@@ -6,6 +6,7 @@ const { getAllPosts, getSinglePost } = require("./controllers/blogposts");
 const { getCommentsOfPost } = require("./controllers/comments.js");
 
 // Add Access Control Allow Origin headers
+// NPM Package available to do this better
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.header(
