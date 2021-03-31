@@ -1,4 +1,4 @@
-import pool from "../pg";
+import pool from "../pg.js";
 
 export const getCommentsOfPost = async (req, res) => {
   try {

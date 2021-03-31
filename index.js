@@ -1,11 +1,11 @@
 import express from "express";
 import 'dotenv/config.js';
+import { getAllAuthors } from "./controllers/authors.js";
+import { getAllPosts, getSinglePost } from "./controllers/blogposts.js";
+import { getCommentsOfPost, createPost } from "./controllers/comments.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
-import { getAllAuthors } from "./controllers/authors";
-import { getAllPosts, getSinglePost } from "./controllers/blogposts";
-import { getCommentsOfPost, createPost } from "./controllers/comments.js";
 
 // Add Access Control Allow Origin headers
 // NPM Package available to do this better (core)
