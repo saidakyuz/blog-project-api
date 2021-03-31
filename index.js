@@ -6,7 +6,7 @@ const { getAllPosts, getSinglePost } = require("./controllers/blogposts");
 const { getCommentsOfPost, createPost } = require("./controllers/comments.js");
 
 // Add Access Control Allow Origin headers
-// NPM Package available to do this better
+// NPM Package available to do this better (core)
 // Is currently open to all domains (hence the "*"), could be changed to our netlify-domain
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
